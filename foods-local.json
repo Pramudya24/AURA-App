@@ -1,0 +1,68 @@
+{
+  "nasi goreng": {
+    "kalori": 480,
+    "protein": 14,
+    "karbo": 68,
+    "lemak": 18,
+    "serat": 2
+  },
+  "fried rice": {
+    "kalori": 480,
+    "protein": 14,
+    "karbo": 68,
+    "lemak": 18,
+    "serat": 2
+  },
+  "gado-gado": {
+    "kalori": 320,
+    "protein": 12,
+    "karbo": 38,
+    "lemak": 14,
+    "serat": 5
+  },
+  "rendang": {
+    "kalori": 380,
+    "protein": 28,
+    "karbo": 12,
+    "lemak": 22,
+    "serat": 1
+  },
+  "soto ayam": {
+    "kalori": 210,
+    "protein": 18,
+    "karbo": 22,
+    "lemak": 8,
+    "serat": 2
+  },
+  "ayam bakar": {
+    "kalori": 290,
+    "protein": 32,
+    "karbo": 8,
+    "lemak": 11,
+    "serat": 0
+  },
+  "tempe": {
+    "kalori": 193,
+    "protein": 19,
+    "karbo": 10,
+    "lemak": 11,
+    "serat": 9
+  },
+  "tahu": { "kalori": 76, "protein": 8, "karbo": 2, "lemak": 5, "serat": 0 },
+  "mie goreng": {
+    "kalori": 510,
+    "protein": 13,
+    "karbo": 72,
+    "lemak": 20,
+    "serat": 3
+  },
+  "nasi putih": {
+    "kalori": 175,
+    "protein": 4,
+    "karbo": 38,
+    "lemak": 0,
+    "serat": 1
+  },
+  "apple": { "kalori": 95, "protein": 0, "karbo": 25, "lemak": 0, "serat": 4 },
+  "banana": { "kalori": 89, "protein": 1, "karbo": 23, "lemak": 0, "serat": 3 }
+}
