@@ -578,30 +578,20 @@ function enterApp(u){
   document.getElementById('globalNav').classList.remove('nav-hidden');
   go('home');
 }
-function doLogout(){clS();document.getElementById('tbtn').classList.remove('show');document.getElementById('globalNav').classList.add('nav-hidden');go('auth');}
+function doLogout(){clS();}
 
 let cur='auth';
 function go(id){
   document.querySelectorAll('.scr').forEach(s=>s.classList.remove('on'));
   document.getElementById(id).classList.add('on');
   cur=id;
-  window.location.hash=id;
   document.querySelectorAll('.nb').forEach(b=>b.classList.remove('on'));
   const nb=document.getElementById('nb-'+id);
   if(nb)nb.classList.add('on');
   if(id==='scan')startScan();
   if(id==='food')startFood();
 }
-function handleHash(){
-  const hash=window.location.hash.replace('#','');
-  const valid=['auth','home','scan','food','result','profil'];
-  const s=gS();
-  if(hash&&valid.includes(hash)){
-    if(hash!=='auth'&&s){enterApp(s);go(hash);}
-    else{go('auth');}
-  }
-}
-window.addEventListener('hashchange',handleHash);
+
 
 let dark=true;
 function toggleTheme(){
