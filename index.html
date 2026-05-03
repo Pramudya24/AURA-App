@@ -614,9 +614,10 @@ function enterApp(u){
   document.getElementById('pWt').textContent=u.weight;
   document.getElementById('pBMI').textContent=(u.weight/((u.height/100)**2)).toFixed(1);
   document.getElementById('tbtn').classList.add('show');
+  document.getElementById('globalNav').classList.remove('nav-hidden');
   go('home');
 }
-function doLogout(){clS();document.getElementById('tbtn').classList.remove('show');go('auth');}
+function doLogout(){clS();document.getElementById('tbtn').classList.remove('show');document.getElementById('globalNav').classList.add('nav-hidden');go('auth');}
 
 let cur='auth';
 function go(id){
@@ -624,6 +625,9 @@ function go(id){
   document.getElementById(id).classList.add('on');
   cur=id;
   window.location.hash=id;
+  document.querySelectorAll('.nb').forEach(b=>b.classList.remove('on'));
+  const nb=document.getElementById('nb-'+id);
+  if(nb)nb.classList.add('on');
   if(id==='scan')startScan();
   if(id==='food')startFood();
 }
