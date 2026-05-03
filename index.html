@@ -204,51 +204,12 @@ canvas{position:absolute;inset:0;width:100%;height:100%;}
       <div class="phone" id="phone">
         <div class="notch"><div class="nc"></div><div class="nd"></div></div>
         <div class="sb"><span style="font-weight:600">9:41</span><span>◎ ▲▲ 100%</span></div>
-        <button class="tbtn" id="tbtn" onclick="toggleTheme()">🌙</button>
+        <button class="tbtn show" id="tbtn" onclick="toggleTheme()">🌙</button>
         <div class="toast" id="toast"></div>
 
         <!-- ══════════════════ AUTH ══════════════════ -->
-        <div class="scr on" id="auth">
-          <div class="scroll">
-            <div class="auth-in">
-              <div class="auth-logo fu">AURA</div>
-              <div class="auth-eye fu fu1">// AR HEALTH INTELLIGENCE</div>
-              <div class="auth-tabs fu fu2">
-                <button class="atab on" onclick="swAuth('login')">Masuk</button>
-                <button class="atab" onclick="swAuth('reg')">Daftar</button>
-              </div>
-              <div class="aform on fu fu3" id="loginF">
-                <div class="aerr" id="lErr">Email atau password salah.</div>
-                <div><div class="fl">Email</div><input class="fi" id="lEm" type="email" placeholder="email@kamu.com" /></div>
-                <div><div class="fl">Password</div><input class="fi" id="lPw" type="password" placeholder="&#9679;&#9679;&#9679;&#9679;&#9679;&#9679;&#9679;&#9679;" /></div>
-                <button class="btn-main" onclick="doLogin()">Masuk →</button>
-                <div style="text-align:center;font-size:11px;color:var(--txt3);cursor:pointer" onclick="swAuth('reg')">
-                  Belum punya akun? <span style="color:var(--sage);font-weight:600">Daftar</span>
-                </div>
-              </div>
-              <div class="aform" id="regF">
-                <div class="aerr" id="rErr">Email sudah terdaftar.</div>
-                <div><div class="fl">Nama Lengkap</div><input class="fi" id="rNm" placeholder="Nama kamu" /></div>
-                <div><div class="fl">Email</div><input class="fi" id="rEm" type="email" placeholder="email@kamu.com" /></div>
-                <div><div class="fl">Password</div><input class="fi" id="rPw" type="password" placeholder="&#9679;&#9679;&#9679;&#9679;&#9679;&#9679;" /></div>
-                <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px">
-                  <div><div class="fl">Tinggi (cm)</div><input class="fi" id="rHt" type="number" placeholder="168" /></div>
-                  <div><div class="fl">Berat (kg)</div><input class="fi" id="rWt" type="number" placeholder="62" /></div>
-                </div>
-                <button class="btn-main" onclick="doReg()">Daftar Sekarang →</button>
-                <div style="text-align:center;font-size:11px;color:var(--txt3);cursor:pointer" onclick="swAuth('login')">
-                  Sudah punya akun? <span style="color:var(--sage);font-weight:600">Masuk</span>
-                </div>
-              </div>
-              <div class="auth-foot">
-                <div class="afl"></div><div class="aft">data tersimpan di perangkat</div><div class="afl"></div>
-              </div>
-            </div>
-          </div>
-        </div>
-
         <!-- ══════════════════ HOME ══════════════════ -->
-        <div class="scr" id="home">
+        <div class="scr on" id="home">
           <div class="scroll pad">
             <div class="hdr fu">
               <div><div class="hdr-tag">SELAMAT PAGI</div><div class="hdr-name" id="hGreet">Halo! 👋</div></div>
@@ -536,7 +497,7 @@ canvas{position:absolute;inset:0;width:100%;height:100%;}
                 <div class="set-ar">›</div>
               </div>
             </div>
-            <button class="logout fu" onclick="doLogout()">Keluar dari Akun</button>
+            
             <div style="height:20px"></div>
           </div>
             <div class="an-c" style="margin-bottom:10px">
@@ -550,7 +511,7 @@ canvas{position:absolute;inset:0;width:100%;height:100%;}
         </div>
 
       <!-- Global Nav — disembunyikan saat auth, muncul setelah login -->
-      <nav class="bnav nav-hidden" id="globalNav">
+      <nav class="bnav" id="globalNav">
         <button class="nb" id="nb-home" onclick="go('home')">
           <svg viewBox="0 0 24 24"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>HOME
         </button>
@@ -780,10 +741,8 @@ window.addEventListener('resize',()=>{
 });
 
 window.addEventListener('DOMContentLoaded',()=>{
-  const s=gS();
-  if(s)enterApp(s);
   document.getElementById('dmChk').checked=dark;
-  handleHash();
+  go('home');
 });
 </script>
 </body>
