@@ -5,34 +5,19 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
     <title>AURA — AR Health Intelligence</title>
     <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
-    <!-- API Keys (jangan di-upload ke GitHub!) -->
-    <script src="config.js"></script>
-    <!-- RPPG -->
-    <script src="rppg.js"></script>
-    <!-- Stress -->
-    <script src="stress.js"></script>
-    <!-- Stylesheet -->
     <link rel="stylesheet" href="style.css" />
-    <!-- PWA -->
     <link rel="manifest" href="manifest.json" />
-    
+    <script src="config.js"></script>
   </head>
   <body>
     <div class="wrap">
       <div class="phone" id="phone">
-        <div class="notch">
-          <div class="nc"></div>
-          <div class="nd"></div>
-        </div>
-        <div class="sb">
-          <span style="font-weight: 600">9:41</span><span>◎ ▲▲ 100%</span>
-        </div>
+        <div class="notch"><div class="nc"></div><div class="nd"></div></div>
+        <div class="sb"><span style="font-weight:600">9:41</span><span>◎ ▲▲ 100%</span></div>
         <button class="tbtn" id="tbtn" onclick="toggleTheme()">🌙</button>
         <div class="toast" id="toast"></div>
 
-        <!-- ═══════════════════════════════════
-             AUTH
-        ════════════════════════════════════ -->
+        <!-- ══════════════════ AUTH ══════════════════ -->
         <div class="scr on" id="auth">
           <div class="scroll">
             <div class="auth-in">
@@ -42,124 +27,81 @@
                 <button class="atab on" onclick="swAuth('login')">Masuk</button>
                 <button class="atab" onclick="swAuth('reg')">Daftar</button>
               </div>
-
-              <!-- Form Login -->
               <div class="aform on fu fu3" id="loginF">
                 <div class="aerr" id="lErr">Email atau password salah.</div>
-                <div>
-                  <div class="fl">Email</div>
-                  <input class="fi" id="lEm" type="email" placeholder="email@kamu.com" />
-                </div>
-                <div>
-                  <div class="fl">Password</div>
-                  <input class="fi" id="lPw" type="password" placeholder="&#9679;&#9679;&#9679;&#9679;&#9679;&#9679;&#9679;&#9679;" />
-                </div>
+                <div><div class="fl">Email</div><input class="fi" id="lEm" type="email" placeholder="email@kamu.com" /></div>
+                <div><div class="fl">Password</div><input class="fi" id="lPw" type="password" placeholder="&#9679;&#9679;&#9679;&#9679;&#9679;&#9679;&#9679;&#9679;" /></div>
                 <button class="btn-main" onclick="doLogin()">Masuk →</button>
-                <div style="text-align: center; font-size: 11px; color: var(--txt3); cursor: pointer;" onclick="swAuth('reg')">
-                  Belum punya akun? <span style="color: var(--sage); font-weight: 600">Daftar</span>
+                <div style="text-align:center;font-size:11px;color:var(--txt3);cursor:pointer" onclick="swAuth('reg')">
+                  Belum punya akun? <span style="color:var(--sage);font-weight:600">Daftar</span>
                 </div>
               </div>
-
-              <!-- Form Register -->
               <div class="aform" id="regF">
                 <div class="aerr" id="rErr">Email sudah terdaftar.</div>
-                <div>
-                  <div class="fl">Nama Lengkap</div>
-                  <input class="fi" id="rNm" placeholder="Nama kamu" />
-                </div>
-                <div>
-                  <div class="fl">Email</div>
-                  <input class="fi" id="rEm" type="email" placeholder="email@kamu.com" />
-                </div>
-                <div>
-                  <div class="fl">Password</div>
-                  <input class="fi" id="rPw" type="password" placeholder="&#9679;&#9679;&#9679;&#9679;&#9679;&#9679;" />
-                </div>
-                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 10px;">
-                  <div>
-                    <div class="fl">Tinggi (cm)</div>
-                    <input class="fi" id="rHt" type="number" placeholder="168" />
-                  </div>
-                  <div>
-                    <div class="fl">Berat (kg)</div>
-                    <input class="fi" id="rWt" type="number" placeholder="62" />
-                  </div>
+                <div><div class="fl">Nama Lengkap</div><input class="fi" id="rNm" placeholder="Nama kamu" /></div>
+                <div><div class="fl">Email</div><input class="fi" id="rEm" type="email" placeholder="email@kamu.com" /></div>
+                <div><div class="fl">Password</div><input class="fi" id="rPw" type="password" placeholder="&#9679;&#9679;&#9679;&#9679;&#9679;&#9679;" /></div>
+                <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px">
+                  <div><div class="fl">Tinggi (cm)</div><input class="fi" id="rHt" type="number" placeholder="168" /></div>
+                  <div><div class="fl">Berat (kg)</div><input class="fi" id="rWt" type="number" placeholder="62" /></div>
                 </div>
                 <button class="btn-main" onclick="doReg()">Daftar Sekarang →</button>
-                <div style="text-align: center; font-size: 11px; color: var(--txt3); cursor: pointer;" onclick="swAuth('login')">
-                  Sudah punya akun? <span style="color: var(--sage); font-weight: 600">Masuk</span>
+                <div style="text-align:center;font-size:11px;color:var(--txt3);cursor:pointer" onclick="swAuth('login')">
+                  Sudah punya akun? <span style="color:var(--sage);font-weight:600">Masuk</span>
                 </div>
               </div>
-
               <div class="auth-foot">
-                <div class="afl"></div>
-                <div class="aft">data tersimpan di perangkat</div>
-                <div class="afl"></div>
+                <div class="afl"></div><div class="aft">data tersimpan di perangkat</div><div class="afl"></div>
               </div>
             </div>
           </div>
         </div>
 
-        <!-- ═══════════════════════════════════
-             HOME
-        ════════════════════════════════════ -->
+        <!-- ══════════════════ HOME ══════════════════ -->
         <div class="scr" id="home">
           <div class="scroll pad">
             <div class="hdr fu">
-              <div>
-                <div class="hdr-tag">SELAMAT PAGI</div>
-                <div class="hdr-name" id="hGreet">Halo! 👋</div>
-              </div>
+              <div><div class="hdr-tag">SELAMAT PAGI</div><div class="hdr-name" id="hGreet">Halo! 👋</div></div>
               <div class="hdr-av" onclick="go('profil')">🌿</div>
             </div>
-
-            <!-- CTA Scan -->
             <div class="cta fu fu1" onclick="go('scan')">
               <div class="cta-glow"></div>
               <svg class="cta-rings" width="80" height="80" viewBox="0 0 80 80">
-                <circle cx="40" cy="40" r="35" fill="none" stroke="rgba(79,184,147,.2)" stroke-width="1" />
-                <circle cx="40" cy="40" r="25" fill="none" stroke="rgba(79,184,147,.15)" stroke-width="1" />
-                <circle cx="40" cy="40" r="15" fill="none" stroke="rgba(79,184,147,.1)" stroke-width="1" />
+                <circle cx="40" cy="40" r="35" fill="none" stroke="rgba(79,184,147,.2)" stroke-width="1"/>
+                <circle cx="40" cy="40" r="25" fill="none" stroke="rgba(79,184,147,.15)" stroke-width="1"/>
+                <circle cx="40" cy="40" r="15" fill="none" stroke="rgba(79,184,147,.1)" stroke-width="1"/>
               </svg>
               <div class="cta-tag">// AR BODY SCAN · THREE.JS</div>
-              <div class="cta-ttl">Analisis Kesehatan<br />Tubuhmu Sekarang</div>
+              <div class="cta-ttl">Analisis Kesehatan<br/>Tubuhmu Sekarang</div>
               <div class="cta-desc">Scan AR deteksi BMI, nutrisi, stres, dan skor mental via Three.js AR simulation.</div>
               <button class="cta-btn">⬡ Mulai Scan AR</button>
             </div>
-
-            <!-- Metrik -->
             <div class="sec-hd fu fu2">
               <div class="sec-ttl">Metrik Hari Ini</div>
               <div class="sec-more" onclick="go('result')">LIHAT HASIL →</div>
             </div>
             <div class="mg fu fu2">
-              <div class="mc" style="--ac: var(--sage)" onclick="showT('Kalori: 1.840 dari target 2.500 kkal')">
-                <div class="mc-i">🥗</div>
-                <div class="mc-v">1,840<span class="mc-u"> kkal</span></div>
+              <div class="mc" style="--ac:var(--sage)" onclick="showT('Kalori: 1.840 dari target 2.500 kkal')">
+                <div class="mc-i">🥗</div><div class="mc-v" id="mKalori">0<span class="mc-u"> kkal</span></div>
                 <div class="mc-l">Kalori Hari Ini</div>
-                <div class="mc-b"><div class="mc-f" style="width: 74%; background: var(--sage)"></div></div>
+                <div class="mc-b"><div class="mc-f" style="width:74%;background:var(--sage)"></div></div>
               </div>
-              <div class="mc" style="--ac: var(--lav)" onclick="showT('Skor Mental: 72/100 — Kondisi Baik')">
-                <div class="mc-i">🧠</div>
-                <div class="mc-v">72<span class="mc-u">/100</span></div>
+              <div class="mc" style="--ac:var(--lav)" onclick="showT('Skor Mental: 72/100 — Kondisi Baik')">
+                <div class="mc-i">🧠</div><div class="mc-v" id="mMental">—<span class="mc-u">/100</span></div>
                 <div class="mc-l">Skor Mental</div>
-                <div class="mc-b"><div class="mc-f" style="width: 72%; background: var(--lav)"></div></div>
+                <div class="mc-b"><div class="mc-f" style="width:72%;background:var(--lav)"></div></div>
               </div>
-              <div class="mc" style="--ac: var(--amb)" onclick="showT('Hidrasi: 1.6L dari target 2.2L')">
-                <div class="mc-i">💧</div>
-                <div class="mc-v">1.6<span class="mc-u"> L</span></div>
+              <div class="mc" style="--ac:var(--amb)" onclick="showT('Hidrasi: 1.6L dari target 2.2L')">
+                <div class="mc-i">💧</div><div class="mc-v">1.6<span class="mc-u"> L</span></div>
                 <div class="mc-l">Hidrasi</div>
-                <div class="mc-b"><div class="mc-f" style="width: 53%; background: var(--amb)"></div></div>
+                <div class="mc-b"><div class="mc-f" style="width:53%;background:var(--amb)"></div></div>
               </div>
-              <div class="mc" style="--ac: var(--cor)" onclick="showT('Tidur: 6.8 jam — Cukup Baik')">
-                <div class="mc-i">😴</div>
-                <div class="mc-v">6.8<span class="mc-u"> jam</span></div>
+              <div class="mc" style="--ac:var(--cor)" onclick="showT('Tidur: 6.8 jam — Cukup Baik')">
+                <div class="mc-i">😴</div><div class="mc-v">6.8<span class="mc-u"> jam</span></div>
                 <div class="mc-l">Tidur Malam</div>
-                <div class="mc-b"><div class="mc-f" style="width: 85%; background: var(--cor)"></div></div>
+                <div class="mc-b"><div class="mc-f" style="width:85%;background:var(--cor)"></div></div>
               </div>
             </div>
-
-            <!-- Mood -->
             <div class="sec-hd fu fu3"><div class="sec-ttl">Perasaan Sekarang?</div></div>
             <div class="mood-c fu fu3">
               <div class="mood-lbl">Pilih mood harimu</div>
@@ -171,70 +113,53 @@
                 <div class="mopt" onclick="setMood(this)"><span class="em">🤩</span>Top!</div>
               </div>
             </div>
-
-            <!-- Nutrisi -->
             <div class="sec-hd fu fu4">
               <div class="sec-ttl">Nutrisi Hari Ini</div>
               <div class="sec-more" onclick="go('food')">FOOD SCAN →</div>
             </div>
             <div class="nutri-c fu fu4">
-              <svg width="76" height="76" viewBox="0 0 76 76" style="flex-shrink: 0">
-                <circle cx="38" cy="38" r="28" fill="none" stroke="var(--bdr)" stroke-width="7" />
-                <circle cx="38" cy="38" r="28" fill="none" stroke="var(--sage)" stroke-width="7" stroke-dasharray="175.9" stroke-dashoffset="44" stroke-linecap="round" transform="rotate(-90 38 38)" />
-                <circle cx="38" cy="38" r="20" fill="none" stroke="var(--bdr)" stroke-width="5" />
-                <circle cx="38" cy="38" r="20" fill="none" stroke="var(--lav)" stroke-width="5" stroke-dasharray="125.7" stroke-dashoffset="38" stroke-linecap="round" transform="rotate(-90 38 38)" />
-                <text x="38" y="34" text-anchor="middle" font-family="Outfit,sans-serif" font-size="13" fill="var(--sage)" font-weight="700">74%</text>
+              <svg width="76" height="76" viewBox="0 0 76 76" style="flex-shrink:0">
+                <circle cx="38" cy="38" r="28" fill="none" stroke="var(--bdr)" stroke-width="7"/>
+                <circle cx="38" cy="38" r="28" fill="none" stroke="var(--sage)" stroke-width="7" stroke-dasharray="175.9" stroke-dashoffset="44" stroke-linecap="round" transform="rotate(-90 38 38)"/>
+                <circle cx="38" cy="38" r="20" fill="none" stroke="var(--bdr)" stroke-width="5"/>
+                <circle cx="38" cy="38" r="20" fill="none" stroke="var(--lav)" stroke-width="5" stroke-dasharray="125.7" stroke-dashoffset="38" stroke-linecap="round" transform="rotate(-90 38 38)"/>
+                <text x="38" y="34" text-anchor="middle" font-family="Outfit,sans-serif" font-size="13" fill="var(--sage)" font-weight="700" id="nutRingPct">0%</text>
+                <text x="38" y="34" 
                 <text x="38" y="45" text-anchor="middle" font-family="JetBrains Mono,monospace" font-size="6" fill="var(--txt3)">TARGET</text>
               </svg>
-              <div style="flex: 1">
-                <div class="nrow"><span><span class="ndot" style="background: var(--sage)"></span><span class="nnm">Protein</span></span><span class="nvl">68g</span></div>
-                <div class="nrow"><span><span class="ndot" style="background: var(--amb)"></span><span class="nnm">Karbo</span></span><span class="nvl">210g</span></div>
-                <div class="nrow"><span><span class="ndot" style="background: var(--lav)"></span><span class="nnm">Lemak</span></span><span class="nvl">54g</span></div>
-                <div class="nrow"><span><span class="ndot" style="background: var(--cor)"></span><span class="nnm">Serat</span></span><span class="nvl">18g</span></div>
+              <div style="flex:1">
+                <div class="nrow"><span><span class="ndot" style="background:var(--sage)"></span><span class="nnm">Protein</span></span><span class="nvl" id="nProtein">0g</span></div>
+                <div class="nrow"><span><span class="ndot" style="background:var(--amb)"></span><span class="nnm">Karbo</span></span><span class="nvl" id="nKarbo">0g</span></div>
+                <div class="nrow"><span><span class="ndot" style="background:var(--lav)"></span><span class="nnm">Lemak</span></span><span class="nvl" id="nLemak">0g</span></div>
+                <div class="nrow"><span><span class="ndot" style="background:var(--cor)"></span><span class="nnm">Serat</span></span><span class="nvl" id="nSerat">0g</span></div>
               </div>
             </div>
-
-            <!-- Aksi Cepat -->
             <div class="sec-hd"><div class="sec-ttl">Aksi Cepat</div></div>
-            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 8px; margin-bottom: 14px;">
-              <div class="mc" style="--ac: var(--amb)" onclick="go('food')">
-                <div class="mc-i">📷</div>
-                <div style="font-size: 12px; font-weight: 700; color: var(--txt)">Food Scan</div>
-                <div class="mc-l">Scan makananmu</div>
-              </div>
-              <div class="mc" style="--ac: var(--lav)" onclick="showT('Fitur meditasi segera hadir!')">
-                <div class="mc-i">🧘</div>
-                <div style="font-size: 12px; font-weight: 700; color: var(--txt)">Meditasi</div>
-                <div class="mc-l">Guided breathing</div>
-              </div>
-              <div class="mc" style="--ac: var(--sage)" onclick="go('result')">
-                <div class="mc-i">📊</div>
-                <div style="font-size: 12px; font-weight: 700; color: var(--txt)">Riwayat</div>
-                <div class="mc-l">12 scan tersimpan</div>
-              </div>
-              <div class="mc" style="--ac: var(--cor)" onclick="showT('Notifikasi pengingat aktif!')">
-                <div class="mc-i">🔔</div>
-                <div style="font-size: 12px; font-weight: 700; color: var(--txt)">Reminder</div>
-                <div class="mc-l">Atur pengingat</div>
-              </div>
+            <div style="display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-bottom:14px">
+              <div class="mc" style="--ac:var(--amb)" onclick="go('food')"><div class="mc-i">📷</div><div style="font-size:12px;font-weight:700;color:var(--txt)">Food Scan</div><div class="mc-l">Scan makananmu</div></div>
+              <div class="mc" style="--ac:var(--lav)" onclick="showT('Fitur meditasi segera hadir!')"><div class="mc-i">🧘</div><div style="font-size:12px;font-weight:700;color:var(--txt)">Meditasi</div><div class="mc-l">Guided breathing</div></div>
+              <div class="mc" style="--ac:var(--sage)" onclick="go('result')"><div class="mc-i">📊</div><div style="font-size:12px;font-weight:700;color:var(--txt)">Riwayat</div><div class="mc-l">12 scan tersimpan</div></div>
+              <div class="mc" style="--ac:var(--cor)" onclick="showT('Notifikasi pengingat aktif!')"><div class="mc-i">🔔</div><div style="font-size:12px;font-weight:700;color:var(--txt)">Reminder</div><div class="mc-l">Atur pengingat</div></div>
             </div>
           </div>
           <div class="bnav">
-            <button class="nb on" onclick="go('home')"><svg viewBox="0 0 24 24"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z" /><polyline points="9 22 9 12 15 12 15 22" /></svg>HOME</button>
-            <button class="nb" onclick="go('scan')"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="3" /><path d="M12 2v3M12 19v3M2 12h3M19 12h3" /><path d="M4.22 4.22l2.12 2.12M17.66 17.66l2.12 2.12M4.22 19.78l2.12-2.12M17.66 6.34l2.12-2.12" /></svg>SCAN</button>
-            <button class="nb" onclick="go('food')"><svg viewBox="0 0 24 24"><path d="M18 8h1a4 4 0 0 1 0 8h-1" /><path d="M2 8h16v9a4 4 0 0 1-4 4H6a4 4 0 0 1-4-4V8z" /><line x1="6" y1="1" x2="6" y2="4" /><line x1="10" y1="1" x2="10" y2="4" /><line x1="14" y1="1" x2="14" y2="4" /></svg>MAKANAN</button>
-            <button class="nb" onclick="go('result')"><svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2" /><path d="M9 9h6M9 13h6M9 17h4" /></svg>HASIL</button>
-            <button class="nb" onclick="go('profil')"><svg viewBox="0 0 24 24"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2" /><circle cx="12" cy="7" r="4" /></svg>PROFIL</button>
+            <button class="nb on" onclick="go('home')"><svg viewBox="0 0 24 24"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>HOME</button>
+            <button class="nb" onclick="go('scan')"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="3"/><path d="M12 2v3M12 19v3M2 12h3M19 12h3"/><path d="M4.22 4.22l2.12 2.12M17.66 17.66l2.12 2.12M4.22 19.78l2.12-2.12M17.66 6.34l2.12-2.12"/></svg>SCAN</button>
+            <button class="nb" onclick="go('food')"><svg viewBox="0 0 24 24"><path d="M18 8h1a4 4 0 0 1 0 8h-1"/><path d="M2 8h16v9a4 4 0 0 1-4 4H6a4 4 0 0 1-4-4V8z"/><line x1="6" y1="1" x2="6" y2="4"/><line x1="10" y1="1" x2="10" y2="4"/><line x1="14" y1="1" x2="14" y2="4"/></svg>MAKANAN</button>
+            <button class="nb" onclick="go('result')"><svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M9 9h6M9 13h6M9 17h4"/></svg>HASIL</button>
+            <button class="nb" onclick="go('profil')"><svg viewBox="0 0 24 24"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>PROFIL</button>
           </div>
         </div>
 
-        <!-- ═══════════════════════════════════
-             BODY SCAN
-        ════════════════════════════════════ -->
-        <div class="scr" id="scan" style="position: relative">
+        <!-- ══════════════════ BODY SCAN ══════════════════ -->
+        <div class="scr" id="scan" style="position:relative">
+          <!-- Three.js canvas -->
           <canvas id="scanC"></canvas>
-          <div style="position: absolute; inset: 0; pointer-events: none; z-index: 5;">
-            <div class="scan-bar" style="pointer-events: all">
+          <!-- Video kamera untuk rPPG (tersembunyi) -->
+          <video id="scanVideo" autoplay playsinline style="display:none"></video>
+          <!-- Overlay AR -->
+          <div style="position:absolute;inset:0;pointer-events:none;z-index:5">
+            <div class="scan-bar" style="pointer-events:all">
               <div class="s-lbl">// AR BODY SCAN · THREE.JS</div>
               <button class="s-cls" onclick="go('home')">&#x2715;</button>
             </div>
@@ -242,48 +167,51 @@
             <div class="s-corner tr"></div>
             <div class="s-corner bl"></div>
             <div class="s-corner br"></div>
-            <!-- AR Tags — diupdate otomatis oleh hitungBMI() -->
-            <div class="ar-tag" style="top: 72px; left: 20px">
+            <!-- AR Tags — diupdate otomatis saat login & rPPG live -->
+            <div class="ar-tag" style="top:72px;left:20px">
               <div class="tv">BMI —</div>
               <span class="tl">Body Mass Index</span>
             </div>
-            <div class="ar-tag rt" style="top: 112px; right: 20px">
+            <div class="ar-tag rt" style="top:112px;right:20px">
               <div class="tv">— bpm</div>
               <span class="tl">Heart Rate</span>
             </div>
-            <div class="ar-tag" style="top: 220px; left: 20px">
+            <div class="ar-tag" style="top:220px;left:20px">
               <div class="tv">—% Fat</div>
               <span class="tl">Body Fat</span>
             </div>
-            <div class="ar-tag rt" style="top: 260px; right: 20px">
+            <div class="ar-tag rt" style="top:260px;right:20px">
               <div class="tv">Stres: —</div>
               <span class="tl">HRV Analysis</span>
             </div>
-            <div class="ar-tag" style="top: 365px; left: 20px">
+            <div class="ar-tag" style="top:365px;left:20px">
               <div class="tv">Vit.D ↓ Rendah</div>
               <span class="tl">Indikator Kulit</span>
             </div>
-            <div class="scan-foot" style="pointer-events: all">
+            <div class="scan-foot" style="pointer-events:all">
               <div class="s-prog-t">
-                <div id="sPf" style="height: 100%; background: var(--sage); border-radius: 2px; width: 0%; transition: width 0.5s;"></div>
+                <div id="sPf" style="height:100%;background:var(--sage);border-radius:2px;width:0%;transition:width 0.5s"></div>
               </div>
               <div class="s-prog-lbl">
                 <span class="act" id="sStat">● Menginisialisasi AR...</span><span id="sPct">0%</span>
               </div>
-              <button class="btn-main" id="sDone" style="display: none" onclick="go('result')">Lihat Hasil Analisis →</button>
-              <button class="btn-main" id="sWait" style="opacity: 0.5; cursor: not-allowed">Sedang Menganalisis...</button>
+              <button class="btn-main" id="sDone" style="display:none" onclick="go('result')">Lihat Hasil Analisis →</button>
+              <button class="btn-main" id="sWait" style="opacity:0.5;cursor:not-allowed">Sedang Menganalisis...</button>
             </div>
           </div>
         </div>
 
-        <!-- ═══════════════════════════════════
-             FOOD SCAN
-        ════════════════════════════════════ -->
-        <div class="scr" id="food" style="position: relative">
+        <!-- ══════════════════ FOOD SCAN ══════════════════ -->
+        <div class="scr" id="food" style="position:relative">
+          <!-- Three.js canvas (background animasi) -->
           <canvas id="foodC"></canvas>
-          <div style="position: absolute; inset: 0; pointer-events: none; z-index: 5;">
-            <div class="food-bar" style="pointer-events: all">
-              <div class="f-lbl">// FOOD SCAN AR · THREE.JS</div>
+          <!-- Video kamera belakang (live feed) -->
+          <video id="foodVideo" autoplay playsinline
+            style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:1;opacity:0.7"></video>
+          <!-- Overlay -->
+          <div style="position:absolute;inset:0;pointer-events:none;z-index:5">
+            <div class="food-bar" style="pointer-events:all">
+              <div class="f-lbl">// FOOD SCAN AR · CLARIFAI</div>
               <button class="s-cls" onclick="go('home')">&#x2715;</button>
             </div>
             <div class="f-corner tl"></div>
@@ -292,107 +220,91 @@
             <div class="f-corner br"></div>
             <div class="food-over">
               <div class="f-det">● TERDETEKSI</div>
-              <div class="f-nm" id="fNm">Nasi Goreng</div>
+              <div class="f-nm" id="fNm">Arahkan ke makanan</div>
               <div class="f-macros">
-                <div class="fmac"><div class="fmac-v" id="fCal">480</div><div class="fmac-l">Kalori</div></div>
-                <div class="fmac"><div class="fmac-v" id="fPro">14g</div><div class="fmac-l">Protein</div></div>
-                <div class="fmac"><div class="fmac-v" id="fFat">18g</div><div class="fmac-l">Lemak</div></div>
-                <div class="fmac"><div class="fmac-v" id="fCarb">68g</div><div class="fmac-l">Karbo</div></div>
+                <div class="fmac"><div class="fmac-v" id="fCal">—</div><div class="fmac-l">Kalori</div></div>
+                <div class="fmac"><div class="fmac-v" id="fPro">—</div><div class="fmac-l">Protein</div></div>
+                <div class="fmac"><div class="fmac-v" id="fFat">—</div><div class="fmac-l">Lemak</div></div>
+                <div class="fmac"><div class="fmac-v" id="fCarb">—</div><div class="fmac-l">Karbo</div></div>
               </div>
             </div>
-            <div class="food-foot" style="pointer-events: all">
+            <div class="food-foot" style="pointer-events:all">
+              <!-- Tombol scan kamera -->
+              <button class="f-log-btn" style="margin-bottom:8px;background:var(--card);color:var(--amb);border:1px solid var(--amb)" onclick="scanMakanan()">
+                📷 Foto & Identifikasi Otomatis
+              </button>
+              <!-- Atau pilih manual -->
               <div class="food-items">
-                <div class="fi-pill on" onclick="selFood(this, 'Nasi Goreng', 480, '14g', '18g', '68g')">🍚 Nasi Goreng</div>
-                <div class="fi-pill" onclick="selFood(this, 'Gado-gado', 320, '12g', '14g', '38g')">🥗 Gado-gado</div>
-                <div class="fi-pill" onclick="selFood(this, 'Ayam Bakar', 290, '32g', '11g', '8g')">🍗 Ayam Bakar</div>
-                <div class="fi-pill" onclick="selFood(this, 'Soto Ayam', 210, '18g', '8g', '22g')">🍲 Soto Ayam</div>
-                <div class="fi-pill" onclick="selFood(this, 'Rendang', 380, '28g', '22g', '12g')">🥩 Rendang</div>
-                <div class="fi-pill" onclick="selFood(this, 'Apel', 95, '0.5g', '0.3g', '25g')">🍎 Apel</div>
+                <div class="fi-pill on" onclick="selFood(this,'Nasi Goreng',480,'14g','18g','68g')">🍚 Nasi Goreng</div>
+                <div class="fi-pill" onclick="selFood(this,'Gado-gado',320,'12g','14g','38g')">🥗 Gado-gado</div>
+                <div class="fi-pill" onclick="selFood(this,'Ayam Bakar',290,'32g','11g','8g')">🍗 Ayam Bakar</div>
+                <div class="fi-pill" onclick="selFood(this,'Soto Ayam',210,'18g','8g','22g')">🍲 Soto Ayam</div>
+                <div class="fi-pill" onclick="selFood(this,'Rendang',380,'28g','22g','12g')">🥩 Rendang</div>
+                <div class="fi-pill" onclick="selFood(this,'Apel',95,'0.5g','0.3g','25g')">🍎 Apel</div>
               </div>
               <button class="f-log-btn" onclick="logFood()">+ Tambahkan ke Log Harian</button>
             </div>
           </div>
         </div>
 
-        <video id="foodVideo" autoplay playsinline
-  style="position:absolute;inset:0;width:100%;height:100%;
-         object-fit:cover;z-index:1;opacity:0.85">
-</video>
-
-<!-- Tambahkan tombol scan di food-foot -->
-<button onclick="scanMakanan()" 
-  style="width:100%;padding:11px;background:#333;color:#d49060;
-         border:1px solid #d49060;border-radius:10px;
-         font-size:13px;font-weight:700;cursor:pointer;margin-bottom:8px">
-  📷 Foto & Identifikasi Otomatis
-</button>
-
-
-        <!-- ═══════════════════════════════════
-             RESULT
-        ════════════════════════════════════ -->
+        <!-- ══════════════════ RESULT ══════════════════ -->
         <div class="scr" id="result">
           <div class="scroll pad">
             <div class="res-hdr fu">
               <div class="back" onclick="go('home')">&#8592;</div>
-              <div>
-                <div class="res-ttl">Hasil Scan AR</div>
-                <div class="res-sub">// 11 MARET 2026 · 09:41</div>
-              </div>
+              <div><div class="res-ttl">Hasil Scan AR</div><div class="res-sub" id="rTanggal">// AURA HEALTH INTELLIGENCE</div></div>
             </div>
             <div class="score-c fu fu1">
               <div class="score-gl"></div>
               <div class="score-lb">// SKOR KESEHATAN KESELURUHAN</div>
-              <div class="score-n">78</div>
-              <div class="score-d">Tubuhmu dalam kondisi <strong style="color: #e8edf5">cukup baik</strong>. Ada beberapa area yang perlu perhatian.</div>
-              <div class="score-bg">
-                <span class="sbg g">✓ BMI Normal</span><span class="sbg g">✓ Hidrasi OK</span>
-                <span class="sbg w">⚠ Stres Sedang</span><span class="sbg w">⚠ Vit.D Rendah</span>
-              </div>
+              <div class="score-n" id="rSkor">—</div>
+              <div class="score-d" id="rDesc">Memuat data...</div>
+              <div class="score-bg" id="rBadges"></div>
             </div>
             <div class="an-c fu fu2">
               <div class="an-hd">
-                <div class="an-ic" style="background: var(--sgl)">🥗</div>
+                <div class="an-ic" style="background:var(--sgl)">🥗</div>
                 <div><div class="an-ttl">Analisis Nutrisi</div><div class="an-sb">Pola makan 7 hari terakhir</div></div>
               </div>
-              <div class="nr"><div class="nl">Protein</div><div class="nt"><div class="nf" style="width: 85%; background: var(--sage)"></div></div><div class="np">85%</div></div>
-              <div class="nr"><div class="nl">Karbohidrat</div><div class="nt"><div class="nf" style="width: 100%; background: var(--amb)"></div></div><div class="np" style="color: var(--amb)">110%</div></div>
-              <div class="nr"><div class="nl">Lemak Sehat</div><div class="nt"><div class="nf" style="width: 62%; background: var(--lav)"></div></div><div class="np">62%</div></div>
-              <div class="nr"><div class="nl">Vitamin D</div><div class="nt"><div class="nf" style="width: 28%; background: var(--cor)"></div></div><div class="np" style="color: var(--cor)">28%</div></div>
-              <div class="nr" style="margin-bottom: 0"><div class="nl">Serat</div><div class="nt"><div class="nf" style="width: 70%; background: var(--sage)"></div></div><div class="np">70%</div></div>
+              <div class="nr" id="rProtein"><div class="nl">Protein<br><small class="nl-val" style="color:var(--txt3)">0g</small></div><div class="nt"><div class="nf" style="width:0%;background:var(--sage)"></div></div><div class="np">0%</div></div>
+              <div class="nr" id="rKarbo"><div class="nl">Karbohidrat<br><small class="nl-val" style="color:var(--txt3)">0g</small></div><div class="nt"><div class="nf" style="width:0%;background:var(--sage)"></div></div><div class="np">0%</div></div>
+              <div class="nr" id="rLemak"><div class="nl">Lemak Sehat<br><small class="nl-val" style="color:var(--txt3)">0g</small></div><div class="nt"><div class="nf" style="width:0%;background:var(--sage)"></div></div><div class="np">0%</div></div>
+              <div class="nr"><div class="nl">Vitamin D</div><div class="nt"><div class="nf" style="width:28%;background:var(--cor)"></div></div><div class="np" style="color:var(--cor)">28%</div></div>
+              <div class="nr" style="margin-bottom:0"><div class="nl">Serat</div><div class="nt"><div class="nf" style="width:70%;background:var(--sage)"></div></div><div class="np">70%</div></div>
             </div>
             <div class="an-c fu fu3">
               <div class="an-hd">
-                <div class="an-ic" style="background: var(--lavl)">🧠</div>
+                <div class="an-ic" style="background:var(--lavl)">🧠</div>
                 <div><div class="an-ttl">Kesehatan Mental</div><div class="an-sb">HRV & pola aktivitas</div></div>
               </div>
-              <div class="ir"><div class="id" style="background: var(--amb)"></div><div class="it">Stres <strong>sedang</strong> — HRV aktif respons stres 3 hari terakhir.</div></div>
-              <div class="ir"><div class="id" style="background: var(--sage)"></div><div class="it">Tidur <strong>membaik</strong> +14% dari minggu lalu.</div></div>
-              <div class="ir" style="margin-bottom: 0"><div class="id" style="background: var(--cor)"></div><div class="it">Perlu lebih banyak <strong>relaksasi aktif</strong> — meditasi atau jalan santai.</div></div>
+              <div class="ir"><div class="id" style="background:var(--amb)"></div><div class="it" id="rHRVInsight">Lakukan scan untuk melihat analisis HRV kamu.</div></div>
             </div>
             <div class="an-c fu fu4">
               <div class="an-hd">
-                <div class="an-ic" style="background: var(--ambl)">✨</div>
+                <div class="an-ic" style="background:var(--ambl)">✨</div>
                 <div><div class="an-ttl">Rekomendasi Hari Ini</div><div class="an-sb">Dipersonalisasi untukmu</div></div>
               </div>
-              <div class="rp"><div class="rp-i">☀️</div><div class="rp-t"><strong>Jemur 15–20 menit</strong> sebelum jam 10 untuk tingkatkan Vitamin D.</div></div>
-              <div class="rp" style="background: var(--lavl)"><div class="rp-i">🧘</div><div class="rp-t"><strong>Meditasi 10 menit</strong> sore ini untuk turunkan kortisol & perbaiki HRV.</div></div>
-              <div class="rp"><div class="rp-i">🥑</div><div class="rp-t"><strong>Tambah lemak sehat</strong> — alpukat, salmon, atau kacang ke menu makan.</div></div>
-              <div class="rp" style="background: var(--lavl); margin-bottom: 0"><div class="rp-i">💧</div><div class="rp-t"><strong>Minum 600 ml lagi</strong> untuk capai target hidrasi 2.2 liter hari ini.</div></div>
+              <div id="rRekom"></div>
+            </div>
+          </div>
+            <div class="an-c" style="margin-bottom:10px">
+              <div class="an-hd">
+                <div class="an-ic" style="background:var(--ambl)">🍽️</div>
+                <div><div class="an-ttl">Log Makanan Hari Ini</div><div class="an-sb" id="rLogSub">0 item tercatat</div></div>
+              </div>
+              <div id="rLogMakanan"></div>
             </div>
           </div>
           <div class="bnav">
-            <button class="nb" onclick="go('home')"><svg viewBox="0 0 24 24"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z" /><polyline points="9 22 9 12 15 12 15 22" /></svg>HOME</button>
-            <button class="nb" onclick="go('scan')"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="3" /><path d="M12 2v3M12 19v3M2 12h3M19 12h3" /></svg>SCAN</button>
-            <button class="nb" onclick="go('food')"><svg viewBox="0 0 24 24"><path d="M18 8h1a4 4 0 0 1 0 8h-1" /><path d="M2 8h16v9a4 4 0 0 1-4 4H6a4 4 0 0 1-4-4V8z" /></svg>MAKANAN</button>
-            <button class="nb on" onclick="go('result')"><svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2" /><path d="M9 9h6M9 13h6M9 17h4" /></svg>HASIL</button>
-            <button class="nb" onclick="go('profil')"><svg viewBox="0 0 24 24"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2" /><circle cx="12" cy="7" r="4" /></svg>PROFIL</button>
+            <button class="nb" onclick="go('home')"><svg viewBox="0 0 24 24"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>HOME</button>
+            <button class="nb" onclick="go('scan')"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="3"/><path d="M12 2v3M12 19v3M2 12h3M19 12h3"/></svg>SCAN</button>
+            <button class="nb" onclick="go('food')"><svg viewBox="0 0 24 24"><path d="M18 8h1a4 4 0 0 1 0 8h-1"/><path d="M2 8h16v9a4 4 0 0 1-4 4H6a4 4 0 0 1-4-4V8z"/></svg>MAKANAN</button>
+            <button class="nb on" onclick="go('result')"><svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M9 9h6M9 13h6M9 17h4"/></svg>HASIL</button>
+            <button class="nb" onclick="go('profil')"><svg viewBox="0 0 24 24"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>PROFIL</button>
           </div>
         </div>
 
-        <!-- ═══════════════════════════════════
-             PROFIL
-        ════════════════════════════════════ -->
+        <!-- ══════════════════ PROFIL ══════════════════ -->
         <div class="scr" id="profil">
           <div class="scroll pad">
             <div class="res-hdr fu">
@@ -407,1394 +319,76 @@
                 <div class="p-badge">● MEMBER AKTIF</div>
               </div>
             </div>
-            <div class="stats-row fu fu2">
+            <div class="stats-row fu fu2" style="display:grid;grid-template-columns:repeat(4,1fr);gap:8px">
               <div class="stat-b"><div class="stat-v" id="pBMI">—</div><div class="stat-l">BMI</div></div>
               <div class="stat-b"><div class="stat-v" id="pHt">—</div><div class="stat-l">Tinggi (cm)</div></div>
               <div class="stat-b"><div class="stat-v" id="pWt">—</div><div class="stat-l">Berat (kg)</div></div>
-              <div class="stat-b"><div class="stat-v">12</div><div class="stat-l">Total Scan</div></div>
+              <div class="stat-b"><div class="stat-v" id="pTotalScan">0</div><div class="stat-l">Total Scan</div></div>
+              <div class="stat-b"><div class="stat-v" id="pTotalLog">0</div><div class="stat-l">Log Makanan</div></div>
             </div>
             <div class="set-sec fu fu3">
               <div class="set-lbl">Pengaturan Akun</div>
               <div class="set-row" onclick="showT('Fitur edit profil segera hadir!')">
-                <div class="set-left"><div class="set-ic" style="background: var(--sgl)">👤</div><div><div class="set-nm">Edit Profil</div><div class="set-sb">Ubah data pribadi & tubuh</div></div></div>
+                <div class="set-left"><div class="set-ic" style="background:var(--sgl)">👤</div><div><div class="set-nm">Edit Profil</div><div class="set-sb">Ubah data pribadi & tubuh</div></div></div>
                 <div class="set-ar">›</div>
               </div>
               <div class="set-row" onclick="showT('Pilih target: Diet, Maintain, atau Bulking')">
-                <div class="set-left"><div class="set-ic" style="background: var(--lavl)">🎯</div><div><div class="set-nm">Target Kesehatan</div><div class="set-sb">Diet • Maintain • Bulking</div></div></div>
+                <div class="set-left"><div class="set-ic" style="background:var(--lavl)">🎯</div><div><div class="set-nm">Target Kesehatan</div><div class="set-sb">Diet • Maintain • Bulking</div></div></div>
                 <div class="set-ar">›</div>
               </div>
               <div class="set-row" onclick="go('result')">
-                <div class="set-left"><div class="set-ic" style="background: var(--ambl)">📊</div><div><div class="set-nm">Riwayat Scan</div><div class="set-sb">12 scan tersimpan</div></div></div>
+                <div class="set-left"><div class="set-ic" style="background:var(--ambl)">📊</div><div><div class="set-nm">Riwayat Scan</div><div class="set-sb" id="pScanSub">0 scan tersimpan</div></div></div>
                 <div class="set-ar">›</div>
               </div>
               <div class="set-row" onclick="go('food')">
-                <div class="set-left"><div class="set-ic" style="background: var(--ambl)">🍽️</div><div><div class="set-nm">Log Makanan</div><div class="set-sb">Riwayat food scan</div></div></div>
+                <div class="set-left"><div class="set-ic" style="background:var(--ambl)">🍽️</div><div><div class="set-nm">Log Makanan</div><div class="set-sb">Riwayat food scan</div></div></div>
                 <div class="set-ar">›</div>
               </div>
             </div>
             <div class="set-sec fu fu4">
               <div class="set-lbl">Tampilan & Lainnya</div>
               <div class="set-row">
-                <div class="set-left"><div class="set-ic" style="background: var(--card2)">🌙</div><div><div class="set-nm">Mode Gelap</div><div class="set-sb">Tema aplikasi</div></div></div>
-                <label class="tgl"><input type="checkbox" id="dmChk" onchange="toggleTheme()" /><div class="tgl-sl"></div></label>
+                <div class="set-left"><div class="set-ic" style="background:var(--card2)">🌙</div><div><div class="set-nm">Mode Gelap</div><div class="set-sb">Tema aplikasi</div></div></div>
+                <label class="tgl"><input type="checkbox" id="dmChk" onchange="toggleTheme()"/><div class="tgl-sl"></div></label>
               </div>
               <div class="set-row">
-                <div class="set-left"><div class="set-ic" style="background: var(--sgl)">🔔</div><div><div class="set-nm">Notifikasi</div><div class="set-sb">Pengingat harian</div></div></div>
-                <label class="tgl"><input type="checkbox" checked onchange="showT('Pengaturan disimpan!')" /><div class="tgl-sl"></div></label>
+                <div class="set-left"><div class="set-ic" style="background:var(--sgl)">🔔</div><div><div class="set-nm">Notifikasi</div><div class="set-sb">Pengingat harian</div></div></div>
+                <label class="tgl"><input type="checkbox" checked onchange="showT('Pengaturan disimpan!')"/><div class="tgl-sl"></div></label>
               </div>
               <div class="set-row" onclick="showT('Laporan diekspor ke PDF!')">
-                <div class="set-left"><div class="set-ic" style="background: var(--corl)">📄</div><div><div class="set-nm">Ekspor Laporan</div><div class="set-sb">Download PDF hasil scan</div></div></div>
+                <div class="set-left"><div class="set-ic" style="background:var(--corl)">📄</div><div><div class="set-nm">Ekspor Laporan</div><div class="set-sb">Download PDF hasil scan</div></div></div>
                 <div class="set-ar">›</div>
               </div>
             </div>
             <button class="logout fu" onclick="doLogout()">Keluar dari Akun</button>
-            <div style="height: 20px"></div>
+            <div style="height:20px"></div>
+          </div>
+            <div class="an-c" style="margin-bottom:10px">
+              <div class="an-hd">
+                <div class="an-ic" style="background:var(--ambl)">🍽️</div>
+                <div><div class="an-ttl">Log Makanan Hari Ini</div><div class="an-sb" id="rLogSub">0 item tercatat</div></div>
+              </div>
+              <div id="rLogMakanan"></div>
+            </div>
           </div>
           <div class="bnav">
-            <button class="nb" onclick="go('home')"><svg viewBox="0 0 24 24"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z" /><polyline points="9 22 9 12 15 12 15 22" /></svg>HOME</button>
-            <button class="nb" onclick="go('scan')"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="3" /><path d="M12 2v3M12 19v3M2 12h3M19 12h3" /></svg>SCAN</button>
-            <button class="nb" onclick="go('food')"><svg viewBox="0 0 24 24"><path d="M18 8h1a4 4 0 0 1 0 8h-1" /><path d="M2 8h16v9a4 4 0 0 1-4 4H6a4 4 0 0 1-4-4V8z" /></svg>MAKANAN</button>
-            <button class="nb" onclick="go('result')"><svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2" /><path d="M9 9h6M9 13h6M9 17h4" /></svg>HASIL</button>
-            <button class="nb on" onclick="go('profil')"><svg viewBox="0 0 24 24"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2" /><circle cx="12" cy="7" r="4" /></svg>PROFIL</button>
+            <button class="nb" onclick="go('home')"><svg viewBox="0 0 24 24"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>HOME</button>
+            <button class="nb" onclick="go('scan')"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="3"/><path d="M12 2v3M12 19v3M2 12h3M19 12h3"/></svg>SCAN</button>
+            <button class="nb" onclick="go('food')"><svg viewBox="0 0 24 24"><path d="M18 8h1a4 4 0 0 1 0 8h-1"/><path d="M2 8h16v9a4 4 0 0 1-4 4H6a4 4 0 0 1-4-4V8z"/></svg>MAKANAN</button>
+            <button class="nb" onclick="go('result')"><svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M9 9h6M9 13h6M9 17h4"/></svg>HASIL</button>
+            <button class="nb on" onclick="go('profil')"><svg viewBox="0 0 24 24"><path d="M20 21v-2a4 4 0 0 0-4-  
+              
+                4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>PROFIL</button>
           </div>
         </div>
 
       </div><!-- /.phone -->
     </div><!-- /.wrap -->
 
-    <!-- Scripts — urutan penting! -->
+    <!-- Scripts — urutan penting! Three.js dulu, lalu modul, lalu app -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
     <script src="rppg.js"></script>
     <script src="stress.js"></script>
     <script src="app.js"></script>
-  </body>
-</html>          placeholder="&#9679;&#9679;&#9679;&#9679;&#9679;&#9679;"
-                  />
-                </div>
-                <div
-                  style="
-                    display: grid;
-                    grid-template-columns: 1fr 1fr;
-                    gap: 10px;
-                  "
-                >
-                  <div>
-                    <div class="fl">Tinggi (cm)</div>
-                    <input
-                      class="fi"
-                      id="rHt"
-                      type="number"
-                      placeholder="168"
-                    />
-                  </div>
-                  <div>
-                    <div class="fl">Berat (kg)</div>
-                    <input class="fi" id="rWt" type="number" placeholder="62" />
-                  </div>
-                </div>
-                <button class="btn-main" onclick="doReg()">
-                  Daftar Sekarang →
-                </button>
-                <div
-                  style="
-                    text-align: center;
-                    font-size: 11px;
-                    color: var(--txt3);
-                    cursor: pointer;
-                  "
-                  onclick="swAuth('login')"
-                >
-                  Sudah punya akun?
-                  <span style="color: var(--sage); font-weight: 600"
-                    >Masuk</span
-                  >
-                </div>
-              </div>
-              <div class="auth-foot">
-                <div class="afl"></div>
-                <div class="aft">data tersimpan di perangkat</div>
-                <div class="afl"></div>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <!-- HOME -->
-        <div class="scr" id="home">
-          <div class="scroll pad">
-            <div class="hdr fu">
-              <div>
-                <div class="hdr-tag">SELAMAT PAGI</div>
-                <div class="hdr-name" id="hGreet">Halo! 👋</div>
-              </div>
-              <div class="hdr-av" onclick="go('profil')">🌿</div>
-            </div>
-            <div class="cta fu fu1" onclick="go('scan')">
-              <div class="cta-glow"></div>
-              <svg class="cta-rings" width="80" height="80" viewBox="0 0 80 80">
-                <circle
-                  cx="40"
-                  cy="40"
-                  r="35"
-                  fill="none"
-                  stroke="rgba(79,184,147,.2)"
-                  stroke-width="1"
-                />
-                <circle
-                  cx="40"
-                  cy="40"
-                  r="25"
-                  fill="none"
-                  stroke="rgba(79,184,147,.15)"
-                  stroke-width="1"
-                />
-                <circle
-                  cx="40"
-                  cy="40"
-                  r="15"
-                  fill="none"
-                  stroke="rgba(79,184,147,.1)"
-                  stroke-width="1"
-                />
-              </svg>
-              <div class="cta-tag">// AR BODY SCAN · VUFORIA ENGINE</div>
-              <div class="cta-ttl">
-                Analisis Kesehatan<br />Tubuhmu Sekarang
-              </div>
-              <div class="cta-desc">
-                Scan AR deteksi BMI, nutrisi, stres, dan skor mental via
-                Three.js AR simulation.
-              </div>
-              <button class="cta-btn">⬡ Mulai Scan AR</button>
-            </div>
-            <div class="sec-hd fu fu2">
-              <div class="sec-ttl">Metrik Hari Ini</div>
-              <div class="sec-more" onclick="go('result')">LIHAT HASIL →</div>
-            </div>
-            <div class="mg fu fu2">
-              <div
-                class="mc"
-                style="--ac: var(--sage)"
-                onclick="showT('Kalori: 1.840 dari target 2.500 kkal')"
-              >
-                <div class="mc-i">🥗</div>
-                <div class="mc-v">1,840<span class="mc-u"> kkal</span></div>
-                <div class="mc-l">Kalori Hari Ini</div>
-                <div class="mc-b">
-                  <div
-                    class="mc-f"
-                    style="width: 74%; background: var(--sage)"
-                  ></div>
-                </div>
-              </div>
-              <div
-                class="mc"
-                style="--ac: var(--lav)"
-                onclick="showT('Skor Mental: 72/100 — Kondisi Baik')"
-              >
-                <div class="mc-i">🧠</div>
-                <div class="mc-v">72<span class="mc-u">/100</span></div>
-                <div class="mc-l">Skor Mental</div>
-                <div class="mc-b">
-                  <div
-                    class="mc-f"
-                    style="width: 72%; background: var(--lav)"
-                  ></div>
-                </div>
-              </div>
-              <div
-                class="mc"
-                style="--ac: var(--amb)"
-                onclick="showT('Hidrasi: 1.6L dari target 2.2L')"
-              >
-                <div class="mc-i">💧</div>
-                <div class="mc-v">1.6<span class="mc-u"> L</span></div>
-                <div class="mc-l">Hidrasi</div>
-                <div class="mc-b">
-                  <div
-                    class="mc-f"
-                    style="width: 53%; background: var(--amb)"
-                  ></div>
-                </div>
-              </div>
-              <div
-                class="mc"
-                style="--ac: var(--cor)"
-                onclick="showT('Tidur: 6.8 jam — Cukup Baik')"
-              >
-                <div class="mc-i">😴</div>
-                <div class="mc-v">6.8<span class="mc-u"> jam</span></div>
-                <div class="mc-l">Tidur Malam</div>
-                <div class="mc-b">
-                  <div
-                    class="mc-f"
-                    style="width: 85%; background: var(--cor)"
-                  ></div>
-                </div>
-              </div>
-            </div>
-            <div class="sec-hd fu fu3">
-              <div class="sec-ttl">Perasaan Sekarang?</div>
-            </div>
-            <div class="mood-c fu fu3">
-              <div class="mood-lbl">Pilih mood harimu</div>
-              <div class="mood-row">
-                <div class="mopt" onclick="setMood(this)">
-                  <span class="em">😞</span>Buruk
-                </div>
-                <div class="mopt" onclick="setMood(this)">
-                  <span class="em">😐</span>Biasa
-                </div>
-                <div class="mopt on" onclick="setMood(this)">
-                  <span class="em">🙂</span>Oke
-                </div>
-                <div class="mopt" onclick="setMood(this)">
-                  <span class="em">😊</span>Baik
-                </div>
-                <div class="mopt" onclick="setMood(this)">
-                  <span class="em">🤩</span>Top!
-                </div>
-              </div>
-            </div>
-            <div class="sec-hd fu fu4">
-              <div class="sec-ttl">Nutrisi Hari Ini</div>
-              <div class="sec-more" onclick="go('food')">FOOD SCAN →</div>
-            </div>
-            <div class="nutri-c fu fu4">
-              <svg
-                width="76"
-                height="76"
-                viewBox="0 0 76 76"
-                style="flex-shrink: 0"
-              >
-                <circle
-                  cx="38"
-                  cy="38"
-                  r="28"
-                  fill="none"
-                  stroke="var(--bdr)"
-                  stroke-width="7"
-                />
-                <circle
-                  cx="38"
-                  cy="38"
-                  r="28"
-                  fill="none"
-                  stroke="var(--sage)"
-                  stroke-width="7"
-                  stroke-dasharray="175.9"
-                  stroke-dashoffset="44"
-                  stroke-linecap="round"
-                  transform="rotate(-90 38 38)"
-                />
-                <circle
-                  cx="38"
-                  cy="38"
-                  r="20"
-                  fill="none"
-                  stroke="var(--bdr)"
-                  stroke-width="5"
-                />
-                <circle
-                  cx="38"
-                  cy="38"
-                  r="20"
-                  fill="none"
-                  stroke="var(--lav)"
-                  stroke-width="5"
-                  stroke-dasharray="125.7"
-                  stroke-dashoffset="38"
-                  stroke-linecap="round"
-                  transform="rotate(-90 38 38)"
-                />
-                <text
-                  x="38"
-                  y="34"
-                  text-anchor="middle"
-                  font-family="Outfit,sans-serif"
-                  font-size="13"
-                  fill="var(--sage)"
-                  font-weight="700"
-                >
-                  74%
-                </text>
-                <text
-                  x="38"
-                  y="45"
-                  text-anchor="middle"
-                  font-family="JetBrains Mono,monospace"
-                  font-size="6"
-                  fill="var(--txt3)"
-                >
-                  TARGET
-                </text>
-              </svg>
-              <div style="flex: 1">
-                <div class="nrow">
-                  <span
-                    ><span class="ndot" style="background: var(--sage)"></span
-                    ><span class="nnm">Protein</span></span
-                  ><span class="nvl">68g</span>
-                </div>
-                <div class="nrow">
-                  <span
-                    ><span class="ndot" style="background: var(--amb)"></span
-                    ><span class="nnm">Karbo</span></span
-                  ><span class="nvl">210g</span>
-                </div>
-                <div class="nrow">
-                  <span
-                    ><span class="ndot" style="background: var(--lav)"></span
-                    ><span class="nnm">Lemak</span></span
-                  ><span class="nvl">54g</span>
-                </div>
-                <div class="nrow">
-                  <span
-                    ><span class="ndot" style="background: var(--cor)"></span
-                    ><span class="nnm">Serat</span></span
-                  ><span class="nvl">18g</span>
-                </div>
-              </div>
-            </div>
-            <div class="sec-hd"><div class="sec-ttl">Aksi Cepat</div></div>
-            <div
-              style="
-                display: grid;
-                grid-template-columns: 1fr 1fr;
-                gap: 8px;
-                margin-bottom: 14px;
-              "
-            >
-              <div class="mc" style="--ac: var(--amb)" onclick="go('food')">
-                <div class="mc-i">📷</div>
-                <div
-                  style="font-size: 12px; font-weight: 700; color: var(--txt)"
-                >
-                  Food Scan
-                </div>
-                <div class="mc-l">Scan makananmu</div>
-              </div>
-              <div
-                class="mc"
-                style="--ac: var(--lav)"
-                onclick="showT('Fitur meditasi segera hadir!')"
-              >
-                <div class="mc-i">🧘</div>
-                <div
-                  style="font-size: 12px; font-weight: 700; color: var(--txt)"
-                >
-                  Meditasi
-                </div>
-                <div class="mc-l">Guided breathing</div>
-              </div>
-              <div class="mc" style="--ac: var(--sage)" onclick="go('result')">
-                <div class="mc-i">📊</div>
-                <div
-                  style="font-size: 12px; font-weight: 700; color: var(--txt)"
-                >
-                  Riwayat
-                </div>
-                <div class="mc-l">12 scan tersimpan</div>
-              </div>
-              <div
-                class="mc"
-                style="--ac: var(--cor)"
-                onclick="showT('Notifikasi pengingat aktif!')"
-              >
-                <div class="mc-i">🔔</div>
-                <div
-                  style="font-size: 12px; font-weight: 700; color: var(--txt)"
-                >
-                  Reminder
-                </div>
-                <div class="mc-l">Atur pengingat</div>
-              </div>
-            </div>
-          </div>
-          <div class="bnav">
-            <button class="nb on" onclick="go('home')">
-              <svg viewBox="0 0 24 24">
-                <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z" />
-                <polyline points="9 22 9 12 15 12 15 22" /></svg
-              >HOME
-            </button>
-            <button class="nb" onclick="go('scan')">
-              <svg viewBox="0 0 24 24">
-                <circle cx="12" cy="12" r="3" />
-                <path d="M12 2v3M12 19v3M2 12h3M19 12h3" />
-                <path
-                  d="M4.22 4.22l2.12 2.12M17.66 17.66l2.12 2.12M4.22 19.78l2.12-2.12M17.66 6.34l2.12-2.12"
-                /></svg
-              >SCAN
-            </button>
-            <button class="nb" onclick="go('food')">
-              <svg viewBox="0 0 24 24">
-                <path d="M18 8h1a4 4 0 0 1 0 8h-1" />
-                <path d="M2 8h16v9a4 4 0 0 1-4 4H6a4 4 0 0 1-4-4V8z" />
-                <line x1="6" y1="1" x2="6" y2="4" />
-                <line x1="10" y1="1" x2="10" y2="4" />
-                <line x1="14" y1="1" x2="14" y2="4" /></svg
-              >MAKANAN
-            </button>
-            <button class="nb" onclick="go('result')">
-              <svg viewBox="0 0 24 24">
-                <rect x="3" y="3" width="18" height="18" rx="2" />
-                <path d="M9 9h6M9 13h6M9 17h4" /></svg
-              >HASIL
-            </button>
-            <button class="nb" onclick="go('profil')">
-              <svg viewBox="0 0 24 24">
-                <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2" />
-                <circle cx="12" cy="7" r="4" /></svg
-              >PROFIL
-            </button>
-          </div>
-        </div>
-
-        <!-- BODY SCAN -->
-        <div class="scr" id="scan" style="position: relative">
-          <canvas id="scanC"></canvas>
-          <div
-            style="
-              position: absolute;
-              inset: 0;
-              pointer-events: none;
-              z-index: 5;
-            "
-          >
-            <div class="scan-bar" style="pointer-events: all">
-              <div class="s-lbl">// AR BODY SCAN · THREE.JS</div>
-              <button class="s-cls" onclick="go('home')">&#x2715;</button>
-            </div>
-            <div class="s-corner tl"></div>
-            <div class="s-corner tr"></div>
-            <div class="s-corner bl"></div>
-            <div class="s-corner br"></div>
-            <div class="ar-tag" style="top: 72px; left: 20px">
-              <div class="tv">BMI 22.1</div>
-              <span class="tl">Normal · Ideal</span>
-            </div>
-            <div class="ar-tag rt" style="top: 112px; right: 20px">
-              <div class="tv">164 bpm</div>
-              <span class="tl">Heart Rate</span>
-            </div>
-            <div class="ar-tag" style="top: 220px; left: 20px">
-              <div class="tv">18.4% Fat</div>
-              <span class="tl">Body Fat</span>
-            </div>
-            <div class="ar-tag rt" style="top: 260px; right: 20px">
-              <div class="tv">Stres: Sedang</div>
-              <span class="tl">HRV Analysis</span>
-            </div>
-            <div class="ar-tag" style="top: 365px; left: 20px">
-              <div class="tv">Vit.D ↓ Rendah</div>
-              <span class="tl">Indikator Kulit</span>
-            </div>
-            <div class="scan-foot" style="pointer-events: all">
-              <div class="s-prog-t">
-                <div
-                  id="sPf"
-                  style="
-                    height: 100%;
-                    background: var(--sage);
-                    border-radius: 2px;
-                    width: 0%;
-                    transition: width 0.5s;
-                  "
-                ></div>
-              </div>
-              <div class="s-prog-lbl">
-                <span class="act" id="sStat">● Menginisialisasi AR...</span
-                ><span id="sPct">0%</span>
-              </div>
-              <button
-                class="btn-main"
-                id="sDone"
-                style="display: none"
-                onclick="go('result')"
-              >
-                Lihat Hasil Analisis →
-              </button>
-              <button
-                class="btn-main"
-                id="sWait"
-                style="opacity: 0.5; cursor: not-allowed"
-              >
-                Sedang Menganalisis...
-              </button>
-            </div>
-          </div>
-        </div>
-
-        <!-- FOOD SCAN -->
-        <div class="scr" id="food" style="position: relative">
-          <canvas id="foodC"></canvas>
-          <div
-            style="
-              position: absolute;
-              inset: 0;
-              pointer-events: none;
-              z-index: 5;
-            "
-          >
-            <div class="food-bar" style="pointer-events: all">
-              <div class="f-lbl">// FOOD SCAN AR · THREE.JS</div>
-              <button class="s-cls" onclick="go('home')">&#x2715;</button>
-            </div>
-            <div class="f-corner tl"></div>
-            <div class="f-corner tr"></div>
-            <div class="f-corner bl"></div>
-            <div class="f-corner br"></div>
-            <div class="food-over">
-              <div class="f-det">● TERDETEKSI</div>
-              <div class="f-nm" id="fNm">Nasi Goreng</div>
-              <div class="f-macros">
-                <div class="fmac">
-                  <div class="fmac-v" id="fCal">480</div>
-                  <div class="fmac-l">Kalori</div>
-                </div>
-                <div class="fmac">
-                  <div class="fmac-v" id="fPro">14g</div>
-                  <div class="fmac-l">Protein</div>
-                </div>
-                <div class="fmac">
-                  <div class="fmac-v" id="fFat">18g</div>
-                  <div class="fmac-l">Lemak</div>
-                </div>
-                <div class="fmac">
-                  <div class="fmac-v" id="fCarb">68g</div>
-                  <div class="fmac-l">Karbo</div>
-                </div>
-              </div>
-            </div>
-            <div class="food-foot" style="pointer-events: all">
-              <div class="food-items">
-                <div
-                  class="fi-pill on"
-                  onclick="
-                    selFood(this, 'Nasi Goreng', 480, '14g', '18g', '68g')
-                  "
-                >
-                  🍚 Nasi Goreng
-                </div>
-                <div
-                  class="fi-pill"
-                  onclick="selFood(this, 'Gado-gado', 320, '12g', '14g', '38g')"
-                >
-                  🥗 Gado-gado
-                </div>
-                <div
-                  class="fi-pill"
-                  onclick="selFood(this, 'Ayam Bakar', 290, '32g', '11g', '8g')"
-                >
-                  🍗 Ayam Bakar
-                </div>
-                <div
-                  class="fi-pill"
-                  onclick="selFood(this, 'Soto Ayam', 210, '18g', '8g', '22g')"
-                >
-                  🍲 Soto Ayam
-                </div>
-                <div
-                  class="fi-pill"
-                  onclick="selFood(this, 'Rendang', 380, '28g', '22g', '12g')"
-                >
-                  🥩 Rendang
-                </div>
-                <div
-                  class="fi-pill"
-                  onclick="selFood(this, 'Apel', 95, '0.5g', '0.3g', '25g')"
-                >
-                  🍎 Apel
-                </div>
-              </div>
-              <button class="f-log-btn" onclick="logFood()">
-                + Tambahkan ke Log Harian
-              </button>
-            </div>
-          </div>
-        </div>
-
-        <!-- RESULT -->
-        <div class="scr" id="result">
-          <div class="scroll pad">
-            <div class="res-hdr fu">
-              <div class="back" onclick="go('home')">&#8592;</div>
-              <div>
-                <div class="res-ttl">Hasil Scan AR</div>
-                <div class="res-sub">// 11 MARET 2026 · 09:41</div>
-              </div>
-            </div>
-            <div class="score-c fu fu1">
-              <div class="score-gl"></div>
-              <div class="score-lb">// SKOR KESEHATAN KESELURUHAN</div>
-              <div class="score-n">78</div>
-              <div class="score-d">
-                Tubuhmu dalam kondisi
-                <strong style="color: #e8edf5">cukup baik</strong>. Ada beberapa
-                area yang perlu perhatian.
-              </div>
-              <div class="score-bg">
-                <span class="sbg g">✓ BMI Normal</span
-                ><span class="sbg g">✓ Hidrasi OK</span>
-                <span class="sbg w">⚠ Stres Sedang</span
-                ><span class="sbg w">⚠ Vit.D Rendah</span>
-              </div>
-            </div>
-            <div class="an-c fu fu2">
-              <div class="an-hd">
-                <div class="an-ic" style="background: var(--sgl)">🥗</div>
-                <div>
-                  <div class="an-ttl">Analisis Nutrisi</div>
-                  <div class="an-sb">Pola makan 7 hari terakhir</div>
-                </div>
-              </div>
-              <div class="nr">
-                <div class="nl">Protein</div>
-                <div class="nt">
-                  <div
-                    class="nf"
-                    style="width: 85%; background: var(--sage)"
-                  ></div>
-                </div>
-                <div class="np">85%</div>
-              </div>
-              <div class="nr">
-                <div class="nl">Karbohidrat</div>
-                <div class="nt">
-                  <div
-                    class="nf"
-                    style="width: 100%; background: var(--amb)"
-                  ></div>
-                </div>
-                <div class="np" style="color: var(--amb)">110%</div>
-              </div>
-              <div class="nr">
-                <div class="nl">Lemak Sehat</div>
-                <div class="nt">
-                  <div
-                    class="nf"
-                    style="width: 62%; background: var(--lav)"
-                  ></div>
-                </div>
-                <div class="np">62%</div>
-              </div>
-              <div class="nr">
-                <div class="nl">Vitamin D</div>
-                <div class="nt">
-                  <div
-                    class="nf"
-                    style="width: 28%; background: var(--cor)"
-                  ></div>
-                </div>
-                <div class="np" style="color: var(--cor)">28%</div>
-              </div>
-              <div class="nr" style="margin-bottom: 0">
-                <div class="nl">Serat</div>
-                <div class="nt">
-                  <div
-                    class="nf"
-                    style="width: 70%; background: var(--sage)"
-                  ></div>
-                </div>
-                <div class="np">70%</div>
-              </div>
-            </div>
-            <div class="an-c fu fu3">
-              <div class="an-hd">
-                <div class="an-ic" style="background: var(--lavl)">🧠</div>
-                <div>
-                  <div class="an-ttl">Kesehatan Mental</div>
-                  <div class="an-sb">HRV & pola aktivitas</div>
-                </div>
-              </div>
-              <div class="ir">
-                <div class="id" style="background: var(--amb)"></div>
-                <div class="it">
-                  Stres <strong>sedang</strong> — HRV aktif respons stres 3 hari
-                  terakhir.
-                </div>
-              </div>
-              <div class="ir">
-                <div class="id" style="background: var(--sage)"></div>
-                <div class="it">
-                  Tidur <strong>membaik</strong> +14% dari minggu lalu.
-                </div>
-              </div>
-              <div class="ir" style="margin-bottom: 0">
-                <div class="id" style="background: var(--cor)"></div>
-                <div class="it">
-                  Perlu lebih banyak <strong>relaksasi aktif</strong> — meditasi
-                  atau jalan santai.
-                </div>
-              </div>
-            </div>
-            <div class="an-c fu fu4">
-              <div class="an-hd">
-                <div class="an-ic" style="background: var(--ambl)">✨</div>
-                <div>
-                  <div class="an-ttl">Rekomendasi Hari Ini</div>
-                  <div class="an-sb">Dipersonalisasi untukmu</div>
-                </div>
-              </div>
-              <div class="rp">
-                <div class="rp-i">☀️</div>
-                <div class="rp-t">
-                  <strong>Jemur 15–20 menit</strong> sebelum jam 10 untuk
-                  tingkatkan Vitamin D.
-                </div>
-              </div>
-              <div class="rp" style="background: var(--lavl)">
-                <div class="rp-i">🧘</div>
-                <div class="rp-t">
-                  <strong>Meditasi 10 menit</strong> sore ini untuk turunkan
-                  kortisol & perbaiki HRV.
-                </div>
-              </div>
-              <div class="rp">
-                <div class="rp-i">🥑</div>
-                <div class="rp-t">
-                  <strong>Tambah lemak sehat</strong> — alpukat, salmon, atau
-                  kacang ke menu makan.
-                </div>
-              </div>
-              <div class="rp" style="background: var(--lavl); margin-bottom: 0">
-                <div class="rp-i">💧</div>
-                <div class="rp-t">
-                  <strong>Minum 600 ml lagi</strong> untuk capai target hidrasi
-                  2.2 liter hari ini.
-                </div>
-              </div>
-            </div>
-          </div>
-          <div class="bnav">
-            <button class="nb" onclick="go('home')">
-              <svg viewBox="0 0 24 24">
-                <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z" />
-                <polyline points="9 22 9 12 15 12 15 22" /></svg
-              >HOME
-            </button>
-            <button class="nb" onclick="go('scan')">
-              <svg viewBox="0 0 24 24">
-                <circle cx="12" cy="12" r="3" />
-                <path d="M12 2v3M12 19v3M2 12h3M19 12h3" /></svg
-              >SCAN
-            </button>
-            <button class="nb" onclick="go('food')">
-              <svg viewBox="0 0 24 24">
-                <path d="M18 8h1a4 4 0 0 1 0 8h-1" />
-                <path d="M2 8h16v9a4 4 0 0 1-4 4H6a4 4 0 0 1-4-4V8z" /></svg
-              >MAKANAN
-            </button>
-            <button class="nb on" onclick="go('result')">
-              <svg viewBox="0 0 24 24">
-                <rect x="3" y="3" width="18" height="18" rx="2" />
-                <path d="M9 9h6M9 13h6M9 17h4" /></svg
-              >HASIL
-            </button>
-            <button class="nb" onclick="go('profil')">
-              <svg viewBox="0 0 24 24">
-                <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2" />
-                <circle cx="12" cy="7" r="4" /></svg
-              >PROFIL
-            </button>
-          </div>
-        </div>
-
-        <!-- PROFIL -->
-        <div class="scr" id="profil">
-          <div class="scroll pad">
-            <div class="res-hdr fu">
-              <div class="back" onclick="go('home')">&#8592;</div>
-              <div><div class="res-ttl">Profil Saya</div></div>
-            </div>
-            <div class="p-hero fu fu1">
-              <div class="p-av">🌿</div>
-              <div>
-                <div class="p-nm" id="pNm">—</div>
-                <div class="p-em" id="pEm">—</div>
-                <div class="p-badge">● MEMBER AKTIF</div>
-              </div>
-            </div>
-            <div class="stats-row fu fu2">
-              <div class="stat-b">
-                <div class="stat-v" id="pBMI">—</div>
-                <div class="stat-l">BMI</div>
-              </div>
-              <div class="stat-b">
-                <div class="stat-v" id="pHt">—</div>
-                <div class="stat-l">Tinggi (cm)</div>
-              </div>
-              <div class="stat-b">
-                <div class="stat-v" id="pWt">—</div>
-                <div class="stat-l">Berat (kg)</div>
-              </div>
-              <div class="stat-b">
-                <div class="stat-v">12</div>
-                <div class="stat-l">Total Scan</div>
-              </div>
-            </div>
-            <div class="set-sec fu fu3">
-              <div class="set-lbl">Pengaturan Akun</div>
-              <div
-                class="set-row"
-                onclick="showT('Fitur edit profil segera hadir!')"
-              >
-                <div class="set-left">
-                  <div class="set-ic" style="background: var(--sgl)">👤</div>
-                  <div>
-                    <div class="set-nm">Edit Profil</div>
-                    <div class="set-sb">Ubah data pribadi & tubuh</div>
-                  </div>
-                </div>
-                <div class="set-ar">›</div>
-              </div>
-              <div
-                class="set-row"
-                onclick="showT('Pilih target: Diet, Maintain, atau Bulking')"
-              >
-                <div class="set-left">
-                  <div class="set-ic" style="background: var(--lavl)">🎯</div>
-                  <div>
-                    <div class="set-nm">Target Kesehatan</div>
-                    <div class="set-sb">Diet • Maintain • Bulking</div>
-                  </div>
-                </div>
-                <div class="set-ar">›</div>
-              </div>
-              <div class="set-row" onclick="go('result')">
-                <div class="set-left">
-                  <div class="set-ic" style="background: var(--ambl)">📊</div>
-                  <div>
-                    <div class="set-nm">Riwayat Scan</div>
-                    <div class="set-sb">12 scan tersimpan</div>
-                  </div>
-                </div>
-                <div class="set-ar">›</div>
-              </div>
-              <div class="set-row" onclick="go('food')">
-                <div class="set-left">
-                  <div class="set-ic" style="background: var(--ambl)">🍽️</div>
-                  <div>
-                    <div class="set-nm">Log Makanan</div>
-                    <div class="set-sb">Riwayat food scan</div>
-                  </div>
-                </div>
-                <div class="set-ar">›</div>
-              </div>
-            </div>
-            <div class="set-sec fu fu4">
-              <div class="set-lbl">Tampilan & Lainnya</div>
-              <div class="set-row">
-                <div class="set-left">
-                  <div class="set-ic" style="background: var(--card2)">🌙</div>
-                  <div>
-                    <div class="set-nm">Mode Gelap</div>
-                    <div class="set-sb">Tema aplikasi</div>
-                  </div>
-                </div>
-                <label class="tgl"
-                  ><input type="checkbox" id="dmChk" onchange="toggleTheme()" />
-                  <div class="tgl-sl"></div
-                ></label>
-              </div>
-              <div class="set-row">
-                <div class="set-left">
-                  <div class="set-ic" style="background: var(--sgl)">🔔</div>
-                  <div>
-                    <div class="set-nm">Notifikasi</div>
-                    <div class="set-sb">Pengingat harian</div>
-                  </div>
-                </div>
-                <label class="tgl"
-                  ><input
-                    type="checkbox"
-                    checked
-                    onchange="showT('Pengaturan disimpan!')" />
-                  <div class="tgl-sl"></div
-                ></label>
-              </div>
-              <div class="set-row" onclick="showT('Laporan diekspor ke PDF!')">
-                <div class="set-left">
-                  <div class="set-ic" style="background: var(--corl)">📄</div>
-                  <div>
-                    <div class="set-nm">Ekspor Laporan</div>
-                    <div class="set-sb">Download PDF hasil scan</div>
-                  </div>
-                </div>
-                <div class="set-ar">›</div>
-              </div>
-            </div>
-            <button class="logout fu" onclick="doLogout()">
-              Keluar dari Akun
-            </button>
-            <div style="height: 20px"></div>
-          </div>
-          <div class="bnav">
-            <button class="nb" onclick="go('home')">
-              <svg viewBox="0 0 24 24">
-                <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z" />
-                <polyline points="9 22 9 12 15 12 15 22" /></svg
-              >HOME
-            </button>
-            <button class="nb" onclick="go('scan')">
-              <svg viewBox="0 0 24 24">
-                <circle cx="12" cy="12" r="3" />
-                <path d="M12 2v3M12 19v3M2 12h3M19 12h3" /></svg
-              >SCAN
-            </button>
-            <button class="nb" onclick="go('food')">
-              <svg viewBox="0 0 24 24">
-                <path d="M18 8h1a4 4 0 0 1 0 8h-1" />
-                <path d="M2 8h16v9a4 4 0 0 1-4 4H6a4 4 0 0 1-4-4V8z" /></svg
-              >MAKANAN
-            </button>
-            <button class="nb" onclick="go('result')">
-              <svg viewBox="0 0 24 24">
-                <rect x="3" y="3" width="18" height="18" rx="2" />
-                <path d="M9 9h6M9 13h6M9 17h4" /></svg
-              >HASIL
-            </button>
-            <button class="nb on" onclick="go('profil')">
-              <svg viewBox="0 0 24 24">
-                <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2" />
-                <circle cx="12" cy="7" r="4" /></svg
-              >PROFIL
-            </button>
-          </div>
-        </div>
-      </div>
-    </div>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
-    <script>
-            const UK = "aura_u",
-              SK = "aura_s";
-            const gU = () => JSON.parse(localStorage.getItem(UK) || "[]");
-            const sU = (u) => localStorage.setItem(UK, JSON.stringify(u));
-            const gS = () => JSON.parse(localStorage.getItem(SK) || "null");
-            const svS = (s) => localStorage.setItem(SK, JSON.stringify(s));
-            const clS = () => localStorage.removeItem(SK);
-
-            function swAuth(t) {
-              document
-                .querySelectorAll(".atab")
-                .forEach((a, i) =>
-                  a.classList.toggle("on", i === (t === "login" ? 0 : 1)),
-                );
-              document.getElementById("loginF").classList.toggle("on", t === "login");
-              document.getElementById("regF").classList.toggle("on", t === "reg");
-              ["lErr", "rErr"].forEach((id) =>
-                document.getElementById(id).classList.remove("on"),
-              );
-            }
-            function doLogin() {
-              const em = document.getElementById("lEm").value.trim();
-              const pw = document.getElementById("lPw").value;
-              const u = gU().find((u) => u.email === em && u.password === pw);
-              if (!u) {
-                document.getElementById("lErr").classList.add("on");
-                return;
-              }
-              svS(u);
-              enterApp(u);
-            }
-            function doReg() {
-              const nm = document.getElementById("rNm").value.trim();
-              const em = document.getElementById("rEm").value.trim();
-              const pw = document.getElementById("rPw").value;
-              const ht = +document.getElementById("rHt").value || 168;
-              const wt = +document.getElementById("rWt").value || 62;
-              const err = document.getElementById("rErr");
-              if (!nm || !em || pw.length < 6) {
-                err.textContent = "Lengkapi semua field. Password min. 6 karakter.";
-                err.classList.add("on");
-                return;
-              }
-              const users = gU();
-              if (users.find((u) => u.email === em)) {
-                err.textContent = "Email sudah terdaftar.";
-                err.classList.add("on");
-                return;
-              }
-              const u = { name: nm, email: em, password: pw, height: ht, weight: wt };
-              users.push(u);
-              sU(users);
-              svS(u);
-              enterApp(u);
-            }
-            function enterApp(u) {
-        // Hitung BMI & body fat dulu
-        function hitungBMI(user) {
-          const tinggiM = user.height / 100;
-          const bmi = (user.weight / (tinggiM * tinggiM)).toFixed(1);
-
-          let kategori = "";
-          if (bmi < 18.5)     kategori = "Kurus";
-          else if (bmi < 25)  kategori = "Normal · Ideal";
-          else if (bmi < 30)  kategori = "Overweight";
-          else                kategori = "Obesitas";
-
-          const usia = user.age || 25;
-          // Pakai rumus pria/wanita jika ada data gender, default rumus wanita
-          const bodyFat = user.gender === "male"
-            ? (1.2 * bmi + 0.23 * usia - 16.2).toFixed(1)
-            : (1.2 * bmi + 0.23 * usia - 5.4).toFixed(1);
-
-          return { bmi, kategori, bodyFat };
-        }
-
-        // Panggil fungsi dan simpan hasilnya
-        const hasil = hitungBMI(u);
-
-        // Update profil
-        document.getElementById("hGreet").textContent = "Halo, " + u.name.split(" ")[0] + " 👋";
-        document.getElementById("pNm").textContent  = u.name;
-        document.getElementById("pEm").textContent  = u.email;
-        document.getElementById("pHt").textContent  = u.height;
-        document.getElementById("pWt").textContent  = u.weight;
-        document.getElementById("pBMI").textContent = hasil.bmi; // pakai dari hitungBMI
-
-        // Update AR tag di layar scan
-        document.querySelectorAll(".ar-tag").forEach(tag => {
-          const tv = tag.querySelector(".tv");
-          const tl = tag.querySelector(".tl");
-          if (!tv || !tl) return;
-
-          if (tv.textContent.includes("BMI")) {
-            tv.textContent = "BMI " + hasil.bmi;
-            tl.textContent = hasil.kategori;
-          }
-          if (tv.textContent.includes("Fat")) {
-            tv.textContent = hasil.bodyFat + "% Fat";
-          }
-        });
-
-        document.getElementById("tbtn").classList.add("show");
-        go("home");
-      }
-
-              // Panggil di enterApp:
-              const hasil = hitungBMI(u);
-
-              // Update AR tag di layar scan
-              document.querySelectorAll(".ar-tag").forEach((tag) => {
-                if (tag.querySelector(".tv").textContent.includes("BMI")) {
-                  tag.querySelector(".tv").textContent = "BMI " + hasil.bmi;
-                  tag.querySelector(".tl").textContent = hasil.kategori;
-                }
-                if (tag.querySelector(".tv").textContent.includes("Fat")) {
-                  tag.querySelector(".tv").textContent = hasil.bodyFat + "% Fat";
-                }
-              });
-
-              // Update halaman profil
-              document.getElementById("pBMI").textContent = hasil.bmi;
-            
-            function doLogout() {
-              clS();
-              document.getElementById("tbtn").classList.remove("show");
-              go("auth");
-            }
-
-            let cur = "auth";
-            function go(id) {
-              document
-                .querySelectorAll(".scr")
-                .forEach((s) => s.classList.remove("on"));
-              document.getElementById(id).classList.add("on");
-              cur = id;
-              if (id === "scan") startScan();
-              if (id === "food") startFood();
-            }
-
-            let dark = true;
-            function toggleTheme() {
-              dark = !dark;
-              document.documentElement.setAttribute(
-                "data-theme",
-                dark ? "dark" : "light",
-              );
-              document.getElementById("tbtn").textContent = dark
-                ? "\u{1f319}"
-                : "\u2600\ufe0f";
-              const c = document.getElementById("dmChk");
-              if (c) c.checked = dark;
-            }
-
-            function setMood(el) {
-              document
-                .querySelectorAll(".mopt")
-                .forEach((m) => m.classList.remove("on"));
-              el.classList.add("on");
-              showT("Mood tersimpan: " + el.querySelector(".em").textContent);
-            }
-
-            let tT;
-            function showT(msg) {
-              const t = document.getElementById("toast");
-              t.textContent = msg;
-              t.classList.add("show");
-              clearTimeout(tT);
-              tT = setTimeout(() => t.classList.remove("show"), 2500);
-            }
-
-            function selFood(el, name, cal, pro, fat, carb) {
-              document
-                .querySelectorAll(".fi-pill")
-                .forEach((p) => p.classList.remove("on"));
-              el.classList.add("on");
-              document.getElementById("fNm").textContent = name;
-              document.getElementById("fCal").textContent = cal;
-              document.getElementById("fPro").textContent = pro;
-              document.getElementById("fFat").textContent = fat;
-              document.getElementById("fCarb").textContent = carb;
-            }
-            function logFood() {
-              const nm = document.getElementById("fNm").textContent;
-              const cal = document.getElementById("fCal").textContent;
-              showT("\u2713 " + nm + " (" + cal + " kkal) ditambahkan!");
-              setTimeout(() => go("home"), 1200);
-            }
-
-            // THREE.JS BODY SCAN
-            let sR, sSc, sCam, sBody, sBeam, sLights;
-            function startScan() {
-              const c = document.getElementById("scanC");
-              const p = document.getElementById("phone");
-              c.width = p.clientWidth;
-              c.height = p.clientHeight;
-              animScan();
-              if (sR) {
-                sR.setSize(c.width, c.height);
-                sCam.aspect = c.width / c.height;
-                sCam.updateProjectionMatrix();
-                sR.setAnimationLoop(rScan);
-                return;
-              }
-              sSc = new THREE.Scene();
-              sCam = new THREE.PerspectiveCamera(60, c.width / c.height, 0.1, 100);
-              sCam.position.set(0, 0, 3.5);
-              sR = new THREE.WebGLRenderer({
-                canvas: c,
-                alpha: true,
-                antialias: true,
-              });
-              sR.setSize(c.width, c.height);
-              sR.setPixelRatio(Math.min(devicePixelRatio, 2));
-              const grid = new THREE.GridHelper(8, 20, 0x1a3a2a, 0x0d1f14);
-              grid.position.y = -1.6;
-              sSc.add(grid);
-              sBody = new THREE.Group();
-              const bM = new THREE.MeshStandardMaterial({
-                color: 0x4fb893,
-                transparent: true,
-                opacity: 0.15,
-              });
-              const wM = new THREE.MeshBasicMaterial({
-                color: 0x4fb893,
-                wireframe: true,
-                transparent: true,
-                opacity: 0.45,
-              });
-              [
-                [new THREE.SphereGeometry(0.18, 16, 16), 0, 1.3, 0],
-                [new THREE.CylinderGeometry(0.22, 0.19, 0.7, 12), 0, 0.65, 0],
-                [new THREE.CylinderGeometry(0.07, 0.06, 0.6, 10), -0.34, 0.7, 0],
-                [new THREE.CylinderGeometry(0.07, 0.06, 0.6, 10), 0.34, 0.7, 0],
-                [new THREE.CylinderGeometry(0.1, 0.09, 0.65, 10), -0.13, 0.0, 0],
-                [new THREE.CylinderGeometry(0.1, 0.09, 0.65, 10), 0.13, 0.0, 0],
-                [new THREE.CylinderGeometry(0.08, 0.07, 0.6, 10), -0.14, -0.72, 0],
-                [new THREE.CylinderGeometry(0.08, 0.07, 0.6, 10), 0.14, -0.72, 0],
-              ].forEach(([g, x, y, z]) => {
-                const m1 = new THREE.Mesh(g, bM.clone()),
-                  m2 = new THREE.Mesh(g, wM.clone());
-                [m1, m2].forEach((m) => m.position.set(x, y, z));
-                sBody.add(m1, m2);
-              });
-              sSc.add(sBody);
-              const bg = new THREE.PlaneGeometry(0.7, 0.025);
-              sBeam = new THREE.Mesh(
-                bg,
-                new THREE.MeshBasicMaterial({
-                  color: 0x4fb893,
-                  transparent: true,
-                  opacity: 0.8,
-                  side: THREE.DoubleSide,
-                }),
-              );
-              sBeam.position.set(0, 1.3, 0.01);
-              sSc.add(sBeam);
-              sSc.add(
-                new THREE.PointLight(0x4fb893, 2, 8).position.set(0, 2, 2) &&
-                  new THREE.PointLight(0x4fb893, 2, 8),
-              );
-              const pl = new THREE.PointLight(0x4fb893, 2, 8);
-              pl.position.set(0, 2, 2);
-              sSc.add(pl);
-              const pl2 = new THREE.PointLight(0x8a7dc8, 1, 6);
-              pl2.position.set(-2, -1, 2);
-              sSc.add(pl2);
-              sSc.add(new THREE.AmbientLight(0x0d2a1a, 4));
-              sR.setAnimationLoop(rScan);
-            }
-            let st = 0;
-            function rScan() {
-              st += 0.016;
-              sBody.rotation.y = Math.sin(st * 0.3) * 0.15;
-              sBeam.position.y = 1.3 - ((st * 0.38) % 2.8);
-              sBeam.material.opacity = 0.5 + Math.sin(st * 4) * 0.3;
-              sBody.children.forEach((c, i) => {
-                if (c.material.wireframe)
-                  c.material.opacity = 0.25 + Math.sin(st * 1.5 + i * 0.3) * 0.2;
-              });
-              sR.render(sSc, sCam);
-            }
-            function animScan() {
-              const pf = document.getElementById("sPf"),
-                stat = document.getElementById("sStat"),
-                pct = document.getElementById("sPct");
-              const done = document.getElementById("sDone"),
-                wait = document.getElementById("sWait");
-              done.style.display = "none";
-              wait.style.display = "block";
-              const steps = [
-                [0, "\u25cf Menginisialisasi AR..."],
-                [20, "\u25cf Mendeteksi tubuh..."],
-                [45, "\u25cf Menganalisis BMI & body fat..."],
-                [65, "\u25cf Mengukur HRV & stres..."],
-                [82, "\u25cf Mengecek indikator nutrisi..."],
-                [95, "\u25cf Finalisasi laporan..."],
-                [100, "\u2713 Analisis selesai!"],
-              ];
-              let si = 0;
-              const iv = setInterval(() => {
-                if (si >= steps.length) {
-                  clearInterval(iv);
-                  done.style.display = "block";
-                  wait.style.display = "none";
-                  return;
-                }
-                const [p, s] = steps[si++];
-                pf.style.width = p + "%";
-                stat.textContent = s;
-                pct.textContent = p + "%";
-              }, 700);
-            }
-
-            // THREE.JS FOOD SCAN
-            let fR, fSc, fCam, fBowl, fRing;
-            function startFood() {
-              const c = document.getElementById("foodC");
-              const p = document.getElementById("phone");
-              c.width = p.clientWidth;
-              c.height = p.clientHeight;
-              if (fR) {
-                fR.setSize(c.width, c.height);
-                fCam.aspect = c.width / c.height;
-                fCam.updateProjectionMatrix();
-                fR.setAnimationLoop(rFood);
-                return;
-              }
-              fSc = new THREE.Scene();
-              fCam = new THREE.PerspectiveCamera(60, c.width / c.height, 0.1, 100);
-              fCam.position.set(0, 1.8, 4);
-              fCam.lookAt(0, 0, 0);
-              fR = new THREE.WebGLRenderer({
-                canvas: c,
-                alpha: true,
-                antialias: true,
-              });
-              fR.setSize(c.width, c.height);
-              fR.setPixelRatio(Math.min(devicePixelRatio, 2));
-              fSc.add(new THREE.GridHelper(6, 12, 0x2a1a08, 0x1a1008));
-              fBowl = new THREE.Group();
-              fBowl.add(
-                Object.assign(
-                  new THREE.Mesh(
-                    new THREE.CylinderGeometry(0.6, 0.4, 0.2, 32),
-                    new THREE.MeshStandardMaterial({
-                      color: 0xe8c890,
-                      roughness: 0.3,
-                      metalness: 0.1,
-                    }),
-                  ),
-                ),
-              );
-              const food = new THREE.Mesh(
-                new THREE.SphereGeometry(0.38, 16, 16),
-                new THREE.MeshStandardMaterial({ color: 0xd4a850, roughness: 0.7 }),
-              );
-              food.position.y = 0.28;
-              fBowl.add(food);
-              [
-                [0.3, 0.32, 0.12, 0x8cc870],
-                [-0.25, 0.3, -0.1, 0xe07030],
-                [0.1, 0.36, 0.2, 0xc87040],
-              ].forEach(([x, y, z, col]) => {
-                const m = new THREE.Mesh(
-                  new THREE.SphereGeometry(0.13, 12, 12),
-                  new THREE.MeshStandardMaterial({ color: col, roughness: 0.7 }),
-                );
-                m.position.set(x, y, z);
-                fBowl.add(m);
-              });
-              fSc.add(fBowl);
-              fRing = new THREE.Mesh(
-                new THREE.TorusGeometry(0.9, 0.015, 8, 64),
-                new THREE.MeshBasicMaterial({
-                  color: 0xd49060,
-                  transparent: true,
-                  opacity: 0.7,
-                }),
-              );
-              fRing.rotation.x = -Math.PI / 2;
-              fRing.position.y = 0.12;
-              fSc.add(fRing);
-              const pl = new THREE.PointLight(0xd49060, 3, 8);
-              pl.position.set(0, 3, 2);
-              fSc.add(pl);
-              const pl2 = new THREE.PointLight(0x4fb893, 1, 6);
-              pl2.position.set(-2, 1, 1);
-              fSc.add(pl2);
-              fSc.add(new THREE.AmbientLight(0xffffff, 0.4));
-              fR.setAnimationLoop(rFood);
-            }
-            let ft = 0;
-            function rFood() {
-              ft += 0.016;
-              fBowl.rotation.y = ft * 0.25;
-              fRing.rotation.z = ft * 0.5;
-              fRing.material.opacity = 0.5 + Math.sin(ft * 2) * 0.2;
-              fCam.position.x = Math.sin(ft * 0.18) * 0.4;
-              fCam.lookAt(0, 0, 0);
-              fR.render(fSc, fCam);
-            }
-
-            window.addEventListener("resize", () => {
-              const p = document.getElementById("phone");
-              if (sR && cur === "scan") {
-                const c = document.getElementById("scanC");
-                c.width = p.clientWidth;
-                c.height = p.clientHeight;
-                sCam.aspect = c.width / c.height;
-                sCam.updateProjectionMatrix();
-                sR.setSize(c.width, c.height);
-              }
-              if (fR && cur === "food") {
-                const c = document.getElementById("foodC");
-                c.width = p.clientWidth;
-                c.height = p.clientHeight;
-                fCam.aspect = c.width / c.height;
-                fCam.updateProjectionMatrix();
-                fR.setSize(c.width, c.height);
-              }
-            });
-
-            window.addEventListener("DOMContentLoaded", () => {
-              const s = gS();
-              if (s) enterApp(s);
-              document.getElementById("dmChk").checked = dark;
-            });
-    </script>
   </body>
 </html>
