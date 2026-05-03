@@ -2,7 +2,7 @@
   "name": "AURA Health",
   "short_name": "AURA",
   "description": "AR Health Intelligence — Scan BMI, nutrisi, dan stres via kamera",
-  "start_url": "/AURA-App.html",
+  "start_url": "/index.html",
   "display": "standalone",
   "orientation": "portrait",
   "background_color": "#080c10",
